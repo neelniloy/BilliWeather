@@ -78,7 +78,6 @@ class WeatherFragment : Fragment() {
         binding.greetingLayout.visibility = View.GONE
         binding.progressBar.visibility = View.VISIBLE
 
-
         locationViewModel.locationLiveData.observe(viewLifecycleOwner) {
 
             Log.e(TAG, "${it.latitude} ${it.longitude}")

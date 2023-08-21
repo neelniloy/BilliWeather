@@ -20,7 +20,7 @@
         android:roundIcon="@drawable/bw_logo_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.WeatherBilli"
-        tools:targetApi="31">
+        tools:targetApi="33">
         <activity
             android:name=".MainActivity"
             android:exported="false" />

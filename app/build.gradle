@@ -9,14 +9,14 @@ android {
         dataBinding true
     }
 
-    compileSdk 32
+    compileSdk 34
 
     defaultConfig {
         applicationId "com.braineer.weatherbilli"
         minSdk 21
-        targetSdk 32
-        versionCode 4
-        versionName "1.4.1"
+        targetSdk 34
+        versionCode 5
+        versionName "1.5.3"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
