@@ -46,17 +46,19 @@ class WeatherFragment : Fragment() {
     private fun convertCityToLatLng(query: String) {
         val geocoder = Geocoder(requireActivity())
         val addressList = geocoder.getFromLocationName(query, 1)
-        if (addressList.isNotEmpty()) {
-            val lat = addressList[0].latitude
-            val lng = addressList[0].longitude
-            Log.e(TAG, "lat: $lat, lng: $lng")
-            val location = Location("").apply {
-                latitude = lat
-                longitude = lng
+        if (addressList != null) {
+            if (addressList.isNotEmpty()) {
+                val lat = addressList[0].latitude
+                val lng = addressList[0].longitude
+                Log.e(TAG, "lat: $lat, lng: $lng")
+                val location = Location("").apply {
+                    latitude = lat
+                    longitude = lng
+                }
+                locationViewModel.setNewLocation(location)
+            }else {
+                Toast.makeText(requireActivity(), "Invalid city name", Toast.LENGTH_SHORT).show()
             }
-            locationViewModel.setNewLocation(location)
-        }else {
-            Toast.makeText(requireActivity(), "Invalid city name", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -194,9 +196,10 @@ class WeatherFragment : Fragment() {
 
         locationViewModel.currentModelLD.observe(viewLifecycleOwner) {
 
-                val geocoder = Geocoder(activity, Locale.getDefault())
+                val geocoder = Geocoder(activity!!, Locale.getDefault())
                 try {
-                    val addresses: List<Address> = geocoder.getFromLocation(location.latitude, location.longitude, 10)
+                    val addresses: List<Address> =
+                        geocoder.getFromLocation(location.latitude, location.longitude, 10)!!
                     val address = addresses[0].subLocality
                     val cityName = addresses[0].locality
                     val stateName = addresses[0].adminArea
