@@ -11,11 +11,13 @@ import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.core.view.WindowCompat
 import com.braineer.weatherbilli.network.detectUserLocation
 import com.braineer.weatherbilli.network.isOnline
 import com.braineer.weatherbilli.prefs.WeatherPreference
@@ -56,7 +58,13 @@ class MainActivity : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
         setContentView(R.layout.activity_main)
+
+        // For Android 15+ - use WindowInsetsControllerCompat instead
+        val insetsController = WindowCompat.getInsetsController(window, window.decorView)
+        insetsController.isAppearanceLightStatusBars = true  // For light status bar icons
+        insetsController.isAppearanceLightNavigationBars = true  // For light nav bar icons
 
         preference = WeatherPreference(this)
 
