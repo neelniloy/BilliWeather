@@ -28,7 +28,6 @@ import com.braineer.weatherbilli.utils.capitalizeWords
 import com.braineer.weatherbilli.viewmodels.LocationViewModel
 import com.bumptech.glide.Glide
 import com.ferfalk.simplesearchview.SimpleSearchView
-import com.github.matteobattilana.weather.PrecipType
 import io.ghyeok.stickyswitch.widget.StickySwitch
 import java.io.IOException
 import java.util.*
@@ -257,39 +256,31 @@ class WeatherFragment : Fragment() {
     }
 
     private fun setOvercastImage(it: CurrentModel) {
-
         when(it.weather[0].main) {
             "Thunderstorm" -> {
                 binding.overcastImage.setImageResource(R.drawable.thunderstorm)
-                binding.weatherView.setWeatherData(PrecipType.RAIN)
             }
             "Drizzle" -> {
                 binding.overcastImage.setImageResource(R.drawable.drizzle)
-                binding.weatherView.setWeatherData(PrecipType.RAIN)
             }
             "Rain" -> {
                 binding.overcastImage.setImageResource(R.drawable.rain)
-                binding.weatherView.setWeatherData(PrecipType.RAIN)
             }
             "Snow" -> {
                 binding.overcastImage.setImageResource(R.drawable.snow)
-                binding.weatherView.setWeatherData(PrecipType.SNOW)
             }
             "Clear" -> {
                 binding.overcastImage.setImageResource(R.drawable.clear)
-                binding.weatherView.setWeatherData(PrecipType.CLEAR)
             }
             "Clouds" -> {
                 binding.overcastImage.setImageResource(R.drawable.clouds)
-                binding.weatherView.setWeatherData(PrecipType.CLEAR)
             }
             else -> {
                 binding.overcastImage.setImageResource(R.drawable.haze)
-                binding.weatherView.setWeatherData(PrecipType.CLEAR)
             }
         }
-
     }
+
 
     private fun getDateText():String{
         val c = Calendar.getInstance()
