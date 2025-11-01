@@ -66,8 +66,6 @@ class ForecastAdapter : ListAdapter<ForecastModel.ForecastItem, ForecastAdapter.
             holder.binding.cardView.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#37b7be"))
         } else if (position%8 == 7) {
             holder.binding.cardView.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#ed3c56"))
-        }else if (position%8==8){
-            holder.binding.cardView.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#5b493c"))
         }
 
     }
